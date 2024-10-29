@@ -1,9 +1,11 @@
 <script setup>
 import Button from '@/components/Ui/Button.vue'
-import LinkBtn from '@/components/Ui/LinkBtn.vue'
 import BlogItem from '@/components/BlogItem.vue'
 
 import blogItems from '@/utils/blog.json'
+import projectsItems from '@/utils/projects.json'
+
+import ProjectItem from '@/components/ProjectItem.vue';
 
 </script>
 
@@ -36,70 +38,8 @@ import blogItems from '@/utils/blog.json'
             </div>
             <div class="projects__body">
 
-                <div class="project">
-                    <div class="project__photo">
-                        <img src="/images/projects/project-1.jpg" alt="">
-                    </div>
-                    <div class="project__info">
-                        <div class="project__info-text">
-                            <h3 class="title title__03 project__info-text__title">
-                                Современная кухня
-                            </h3>
-                            <p class="paragraph paragraph__large">
-                                Декор / Планировка
-                            </p>
-                        </div>
-                        <LinkBtn />
-                    </div>
-                </div>
-                <div class="project">
-                    <div class="project__photo">
-                        <img src="/images/projects/project-2.jpg" alt="">
-                    </div>
-                    <div class="project__info">
-                        <div class="project__info-text">
-                            <h3 class="title title__03 project__info-text__title">
-                                Современная кухня
-                            </h3>
-                            <p class="paragraph paragraph__large">
-                                Декор / Планировка
-                            </p>
-                        </div>
-                        <LinkBtn />
-                    </div>
-                </div>
-                <div class="project">
-                    <div class="project__photo">
-                        <img src="/images/projects/project-3.jpg" alt="">
-                    </div>
-                    <div class="project__info">
-                        <div class="project__info-text">
-                            <h3 class="title title__03 project__info-text__title">
-                                Современная кухня
-                            </h3>
-                            <p class="paragraph paragraph__large">
-                                Декор / Планировка
-                            </p>
-                        </div>
-                        <LinkBtn />
-                    </div>
-                </div>
-                <div class="project">
-                    <div class="project__photo">
-                        <img src="/images/projects/project-4.jpg" alt="">
-                    </div>
-                    <div class="project__info">
-                        <div class="project__info-text">
-                            <h3 class="title title__03 project__info-text__title">
-                                Современная кухня
-                            </h3>
-                            <p class="paragraph paragraph__large">
-                                Декор / Планировка
-                            </p>
-                        </div>
-                        <LinkBtn />
-                    </div>
-                </div>
+                <ProjectItem v-for="item in projectsItems.slice(0, 4)" :key="item.id" :photo="item.photo"
+                    :title="item.title" :type="item.type" :class="['main-project-item-rounded-img']" />
 
             </div>
         </div>
@@ -174,6 +114,23 @@ export default {
     }
 }
 </script>
+<style lang="scss">
+.main-project-item-rounded-img:nth-child(1)>.project__item-photo {
+    border-radius: 0 50px 0 0;
+}
+
+.main-project-item-rounded-img:nth-child(2)>.project__item-photo {
+    border-radius: 50px 0 0 0;
+}
+
+.main-project-item-rounded-img:nth-child(3)>.project__item-photo {
+    border-radius: 0 0 50px 0;
+}
+
+.main-project-item-rounded-img:nth-child(4)>.project__item-photo {
+    border-radius: 0 0 0 50px;
+}
+</style>
 <style lang="scss" scoped>
 .intro {
     display: flex;
@@ -206,25 +163,6 @@ export default {
     }
 }
 
-.project {
-    &__photo {
-        width: 100%;
-        overflow: hidden;
-
-        img {
-            width: 100%;
-        }
-    }
-
-    &__info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        margin-top: 25px;
-    }
-}
-
 .projects {
 
     margin-top: 100px;
@@ -240,22 +178,6 @@ export default {
         row-gap: 50px;
 
         margin-top: 95px;
-
-        &>.project:nth-child(1)>.project__photo {
-            border-radius: 0 50px 0 0;
-        }
-
-        &>.project:nth-child(2)>.project__photo {
-            border-radius: 50px 0 0 0;
-        }
-
-        &>.project:nth-child(3)>.project__photo {
-            border-radius: 0 0 50px 0;
-        }
-
-        &>.project:nth-child(4)>.project__photo {
-            border-radius: 0 0 0 50px;
-        }
     }
 }
 
