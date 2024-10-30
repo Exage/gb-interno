@@ -1,25 +1,28 @@
 <script setup>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 
-import Main from './pages/Main.vue';
-import Blog from './pages/Blog.vue';
-import Post from './pages/Post.vue';
-import Projects from './pages/Projects.vue';
-import Project from './pages/Project.vue';
+import { RouterView } from 'vue-router';
 
 </script>
 
 <template>
     <Header />
 
-    <!-- <Main /> -->
-    <!-- <Blog /> -->
-    <!-- <Post /> -->
-    <!-- <Projects /> -->
-    <Project />
+    <RouterView />
 
     <Footer />
 </template>
 
-<style scoped></style>
+<style>
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+
+    min-height: 100vh;
+
+    padding-top: 150px;
+}
+</style>

@@ -21,7 +21,7 @@ const blogItems = computed(() => store.state.blogItems)
             <div class="blog__last-post__block">
                 <h1 class="title title__01">Последний пост</h1>
 
-                <a href="post.html" class="blog__last-post">
+                <RouterLink to="/blog/post" class="blog__last-post">
                     <div class="blog__last-post__image">
                         <img :src="blogItems.length > 0 ? 'images/blog/' + blogItems[0].photo : ''" alt="">
                     </div>
@@ -39,7 +39,7 @@ const blogItems = computed(() => store.state.blogItems)
                             <LinkBtn :class="['link__btn-blog']" />
                         </div>
                     </div>
-                </a>
+                </RouterLink>
 
             </div>
         </div>

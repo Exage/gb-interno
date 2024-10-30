@@ -1,5 +1,5 @@
 <script setup>
-
+import { RouterLink } from 'vue-router';
 import LinkBtn from './Ui/LinkBtn.vue';
 import tags from '@/utils/blog-tags.json';
 
@@ -23,7 +23,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <a href="#" class="blog__item">
+    <RouterLink to="/blog/post" class="blog__item">
         <div class="blog__item-photo">
             <div class="blog__item-tag">{{ tags[tag] }}</div>
             <img :src="`/images/blog/${photo}`" :alt="title">
@@ -37,7 +37,7 @@ const props = defineProps({
             </div>
             <LinkBtn :class="['link__btn-blog']" />
         </div>
-    </a>
+    </RouterLink>
 </template>
 <script>
 export default {

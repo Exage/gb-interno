@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router';
 
 const props = defineProps({
     photo: {
@@ -29,7 +30,7 @@ const props = defineProps({
                         {{ title }}
                     </h1>
                     <div class="page__banner-text__path">
-                        <a href="index.html" class="paragraph paragraph__large">Домой</a>
+                        <RouterLink to="/" class="paragraph paragraph__large">Домой</RouterLink>
                         <p class="paragraph paragraph__large">{{ path }}</p>
                     </div>
                 </div>

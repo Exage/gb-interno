@@ -6,7 +6,9 @@
                     <img :src="logo" alt="Interno">
                 </div>
                 <nav class="header__nav">
-                    <a v-for="link in links" :href="link.url" class="header__nav-link">{{ link.name }}</a>
+                    <RouterLink v-for="link in links" :to="link.url" class="header__nav-link">
+                        {{ link.name }}
+                    </RouterLink>
                 </nav>
             </div>
         </div>
@@ -15,16 +17,18 @@
 
 <script>
 import logo from '@/assets/images/logo.svg'
+import { RouterLink } from 'vue-router';
 
 export default {
     name: "Header",
     data() {
         return {
             logo,
+            RouterLink,
             links: [
-                { name: 'Домой', url: '#' },
-                { name: 'Проект', url: '#' },
-                { name: 'Блог', url: '#' }
+                { name: 'Домой', url: '/' },
+                { name: 'Проект', url: '/projects' },
+                { name: 'Блог', url: '/blog' }
             ]
         }
     }

@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router';
 import LinkBtn from './Ui/LinkBtn.vue';
 
 const props = defineProps({
@@ -16,7 +17,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <a href="#" class="project__item" :class="$attrs.class">
+    <RouterLink to="/projects/project" class="project__item" :class="$attrs.class">
         <div class="project__item-photo">
             <img :src="`/images/projects/${photo}`" :alt="`${title}`">
         </div>
@@ -31,7 +32,7 @@ const props = defineProps({
             </div>
             <LinkBtn />
         </div>
-    </a>
+    </RouterLink>
 </template>
 <script>
 export default {

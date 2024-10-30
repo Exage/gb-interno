@@ -3,6 +3,7 @@
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
+import { RouterLink } from 'vue-router';
 import PageBanner from '@/components/PageBanner.vue'
 import BlogItem from '@/components/BlogItem.vue';
 

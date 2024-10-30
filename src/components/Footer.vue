@@ -24,8 +24,10 @@
                 <div class="footer__columns">
                     <div class="footer__column">
                         <h3 class="title title__03 footer__column-title">Страницы</h3>
-                        <a v-for="link in links" :href="link.url"
-                            class="paragraph paragraph__large footer__column-link">{{ link.name }}</a>
+                        <RouterLink v-for="link in links" :to="link.url"
+                            class="paragraph paragraph__large footer__column-link">
+                            {{ link.name }}
+                        </RouterLink>
                     </div>
                     <div class="footer__column">
                         <h3 class="title title__03 footer__column-title">Контакты</h3>
@@ -45,16 +47,18 @@
 </template>
 <script>
 import logo from '@/assets/images/logo.svg'
+import { RouterLink } from 'vue-router';
 
 export default {
     name: "Footer",
     data() {
         return {
             logo,
+            RouterLink,
             links: [
-                { name: 'Домой', url: '#' },
-                { name: 'Проект', url: '#' },
-                { name: 'Блог', url: '#' }
+                { name: 'Домой', url: '/' },
+                { name: 'Проект', url: '/projects' },
+                { name: 'Блог', url: '/blog' }
             ]
         }
     }
@@ -62,7 +66,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .footer {
-    margin-top: 50px;
+    margin-top: auto;
+    padding-top: 100px;
     padding-bottom: 100px;
 
     &__inner {
