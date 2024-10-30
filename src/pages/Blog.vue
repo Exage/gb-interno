@@ -1,12 +1,14 @@
 <script setup>
 
-import blogItems from '@/utils/blog.json'
-import blogTags from '@/utils/blog-tags.json'
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 import BlogItem from '@/components/BlogItem.vue';
-
+import PageBanner from '@/components/PageBanner.vue';
 import LinkBtn from '@/components/Ui/LinkBtn.vue';
 
-import PageBanner from '@/components/PageBanner.vue';
+const store = useStore()
+
+const blogItems = computed(() => store.state.blogItems)
 
 </script>
 
@@ -34,8 +36,6 @@ import PageBanner from '@/components/PageBanner.vue';
                             <div class="blog__last-post__date">
                                 {{ blogItems.length > 0 ? blogItems[0].date : '' }}
                             </div>
-
-
                             <LinkBtn :class="['link__btn-blog']" />
                         </div>
                     </div>

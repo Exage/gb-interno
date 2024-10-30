@@ -1,6 +1,6 @@
 <script setup>
 
-import btnArrow from '@/assets/icons/btnArrow.vue';
+import btnArrow from '@/components/Ui/btnArrow.vue';
 
 const props = defineProps({
     text: {

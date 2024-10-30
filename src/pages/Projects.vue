@@ -1,27 +1,29 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import { useStore } from 'vuex';
 
 import PageBanner from '@/components/PageBanner.vue';
-import items from '@/utils/projects.json'
-import tags from '@/utils/projects-tags.json'
-
 import ProjectItem from '@/components/ProjectItem.vue';
 
-const itemsToDisplay = ref([])
+const store = useStore()
 
+const tags = computed(() => store.state.projectTags)
+const items = computed(() => store.state.projectItems)
+
+const itemsToDisplay = ref([])
 const activeTag = ref(null)
 
 const setActiveTag = (tag) => {
     if (activeTag.value !== tag) {
         activeTag.value = tag
 
-        const tagIndex = Object.keys(tags).find(key => tags[key] === tag)
-        itemsToDisplay.value = items.filter(item => String(item.tag) === tagIndex)
+        const tagIndex = Object.keys(tags.value).find(key => tags.value[key] === tag)
+        itemsToDisplay.value = items.value.filter(item => String(item.tag) === tagIndex)
     }
 }
 
 onMounted(() => {
-    setActiveTag(tags[1])
+    setActiveTag(tags.value[1])
 })
 
 </script>

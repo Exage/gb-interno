@@ -1,11 +1,15 @@
 <script setup>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 import Button from '@/components/Ui/Button.vue'
 import BlogItem from '@/components/BlogItem.vue'
 
-import blogItems from '@/utils/blog.json'
-import projectsItems from '@/utils/projects.json'
-
 import ProjectItem from '@/components/ProjectItem.vue';
+
+const store = useStore()
+
+const blogItems = computed(() => store.state.blogItems)
+const projectsItems = computed(() => store.state.projectItems)
 
 </script>
 

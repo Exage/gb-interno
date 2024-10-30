@@ -6,6 +6,7 @@ import Main from './pages/Main.vue';
 import Blog from './pages/Blog.vue';
 import Post from './pages/Post.vue';
 import Projects from './pages/Projects.vue';
+import Project from './pages/Project.vue';
 
 </script>
 
@@ -15,7 +16,8 @@ import Projects from './pages/Projects.vue';
     <!-- <Main /> -->
     <!-- <Blog /> -->
     <!-- <Post /> -->
-    <Projects />
+    <!-- <Projects /> -->
+    <Project />
 
     <Footer />
 </template>

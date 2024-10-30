@@ -1,25 +1,28 @@
 <script setup>
 
-import { ref } from 'vue';
-
-import blogItems from '@/utils/blog.json'
-import blogTags from '@/utils/blog-tags.json'
+import { computed, ref } from 'vue';
+import { useStore } from 'vuex';
 
 import PageBanner from '@/components/PageBanner.vue'
 import BlogItem from '@/components/BlogItem.vue';
 
-const itemsToDisplay = ref([...blogItems])
+const store = useStore()
+
+const blogItems = computed(() => store.state.blogItems)
+const blogTags = computed(() => store.state.blogTags)
+
+const itemsToDisplay = ref([...blogItems.value])
 const activeTag = ref(null)
 
 const setActiveTag = (tag) => {
     if (activeTag.value === tag) {
-        itemsToDisplay.value = [...blogItems]
+        itemsToDisplay.value = [...blogItems.value]
         activeTag.value = null
     } else {
         activeTag.value = tag
 
-        const tagIndex = Object.keys(blogTags).find(key => blogTags[key] === tag)
-        itemsToDisplay.value = blogItems.filter(item => String(item.tag) === tagIndex)
+        const tagIndex = Object.keys(blogTags.value).find(key => blogTags.value[key] === tag)
+        itemsToDisplay.value = blogItems.value.filter(item => String(item.tag) === tagIndex)
     }
 }
 

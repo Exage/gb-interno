@@ -48,6 +48,10 @@ export default {
         width: 100%;
         overflow: hidden;
 
+        min-height: 500px;
+
+        background-color: #C4C4C4;
+
         img {
             width: 100%;
         }
